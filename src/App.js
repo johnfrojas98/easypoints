@@ -1,21 +1,19 @@
-import React from 'react'
-import { Grid } from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-// import background_image from './images/background_image.svg';
-import background_image from './images/Imagen3.jpg';
+import React, {Suspense} from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import Layout from './components/Layout';
 
-const useStyles = makeStyles(theme=>({
-  root: {
-    backgroundImage: `url(${background_image})`
-  }
-}))
 
 const App = () => {
-  const classes = useStyles();
   return (
-    <Grid container component='main' className={classes.root}>
-
-    </Grid>
+    <Router>
+      <Suspense fallback={<p>Cargando...</p>}>
+        <Routes>
+          <Route exact path='/' name='Login' element={<Login/>}/>
+          <Route exact path='/app' name='Layout' element={<Layout/>}/>
+        </Routes>
+      </Suspense>
+    </Router>
   )
 }
 
