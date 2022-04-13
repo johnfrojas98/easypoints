@@ -1,0 +1,10 @@
+.datatable__container {
+    max-height: 75vh;
+}
+
+.datatable__container__head {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #ffffff;
+}

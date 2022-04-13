@@ -50,8 +50,7 @@ const Layout = () => {
                     <Divider/>
                 </Paper>
             </Drawer>
-            {/* <EnhancedTable/> */}
-            <Container  maxWidth='sm' component={Paper} elevation={4} className={classes.container}>
+            <Container  maxWidth='md' component={Paper} elevation={4} className={classes.container}>
                 <Datatable/>
             </Container>
             <footer className='layout__footer'>

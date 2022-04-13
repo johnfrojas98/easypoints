@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme=>({
   },
   container: {
     opacity: '0.9',
-    height: '70%',
+    height: '60vh',
     marginTop: theme.spacing(10),
     [theme.breakpoints.down(400 + theme.spacing(2) + 2)]: {
       marginTop: 0,
@@ -73,43 +73,43 @@ const Login = () => {
         <Container component={Paper} elevation={5} maxWidth='xs' className={classes.container}>
           <img src={mainLogo} alt="Main Logo" className={classes.imgLogo} />
           <div className={classes.div}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon/>
-          </Avatar>
-          <Typography component='h1' variant='h5'>Iniciar sesión</Typography>
-          <form className={classes.form}>
-            <TextField
-              fullWidth
-              autoFocus
-              color='primary'
-              margin='normal'
-              variant='outlined'
-              label='Usuario'
-              name='nickname'
-              value={body.nickname}
-              onChange={handleChange}
-            />
-            <TextField
-              fullWidth
-              type='password'
-              color='primary'
-              margin='normal'
-              variant='outlined'
-              label='Contraseña'
-              name='password'
-              value={body.password}
-              onChange={handleChange}
-            />
-            <Button 
-              fullWidth
-              variant='contained'
-              color='primary'
-              className={classes.button}
-              onClick={() => onSubmit()}
-            >
-              Ingresar
-            </Button>
-          </form>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon/>
+            </Avatar>
+            <Typography component='h1' variant='h5'>Iniciar sesión</Typography>
+            <form className={classes.form}>
+              <TextField
+                fullWidth
+                autoFocus
+                color='primary'
+                margin='normal'
+                variant='outlined'
+                label='Usuario'
+                name='nickname'
+                value={body.nickname}
+                onChange={handleChange}
+              />
+              <TextField
+                fullWidth
+                type='password'
+                color='primary'
+                margin='normal'
+                variant='outlined'
+                label='Contraseña'
+                name='password'
+                value={body.password}
+                onChange={handleChange}
+              />
+              <Button 
+                fullWidth
+                variant='contained'
+                color='primary'
+                className={classes.button}
+                onClick={() => onSubmit()}
+              >
+                Ingresar
+              </Button>
+            </form>
           </div>
         </Container>
       </Grid>
