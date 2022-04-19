@@ -17,13 +17,13 @@ const Layout = () => {
     
     const [openDrawer, setOpenDrawer] = useState(false);
 
-    const useStyles = makeStyles(theme => ({
-        container: {
-            marginTop: theme.spacing(15)
-        }
-    }))
+    // const useStyles = makeStyles(theme => ({
+    //     container: {
+    //         marginTop: theme.spacing(1)
+    //     }
+    // }))
 
-    const classes = useStyles();
+    // const classes = useStyles();
 
     return(
         <>
@@ -50,7 +50,7 @@ const Layout = () => {
                     <Divider/>
                 </Paper>
             </Drawer>
-            <Container  maxWidth='md' component={Paper} elevation={4} className={classes.container}>
+            <Container  maxWidth='md' component={Paper} elevation={4} className='container__datatable__users'>
                 <Datatable/>
             </Container>
             <footer className='layout__footer'>

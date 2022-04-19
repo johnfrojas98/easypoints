@@ -21,3 +21,8 @@
     bottom: 0;
     position: fixed;
 }
+
+.container__datatable__users {
+    margin-top: 75px;
+    padding-top: 10px;
+}
