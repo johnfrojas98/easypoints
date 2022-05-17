@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
-import {Table, IconButton, InputBase, TableContainer, TableHead, TableRow, TableCell, TableBody, Paper} from '@material-ui/core';
-import { EditOutlined, DeleteForeverOutlined, Search as SearchIcon } from '@material-ui/icons';
+import {Table, IconButton, InputBase, TableContainer, TableHead, TableRow, TableCell, TableBody, Paper, Tooltip} from '@material-ui/core';
+import { Search as SearchIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core';
+import ModalDelete from '../ModalDelete/ModalDelete';
+import EditUser from '../EditUser/EditUser';
+import Layout from '../Layout';
 import './Datatable.css';
 
 const Datatable = () => {
@@ -19,7 +22,7 @@ const Datatable = () => {
         display: 'flex',
         alignItems: 'center',
         borderRadius: 16,
-        margin: '0 0 2px 3px',
+        margin: '6px 0 4px 6px',
         padding: '2px 4px'
       }
     }));
@@ -27,7 +30,7 @@ const Datatable = () => {
     const classes = useStyles();
 
   const [users, setUsers] = useState([
-    {id: 1, cedula: 123456789, nombres: 'John', apellidos: 'Rojas', compras: 50000, puntos: 500, active: 'Y'},
+    {id: 1, cedula: 123456789, nombres: 'John Fredy', apellidos: 'Rojas Casilimas', compras: 50000, puntos: 500, active: 'Y'},
     {id: 2, cedula: 54646543543, nombres: 'Madelyn', apellidos: 'Sanchez', compras: 75000, puntos: 750, active: 'Y'},
     {id: 3, cedula: 111111111, nombres: 'Juana', apellidos: 'Cortes', compras: 75000, puntos: 750, active: 'Y'},
     {id: 4, cedula: 534553453, nombres: 'Katalina', apellidos: 'Rodriguez', compras: 75000, puntos: 750, active: 'Y'},
@@ -47,6 +50,12 @@ const Datatable = () => {
     {id: 18, cedula: 999999999, nombres: 'Fredy', apellidos: 'Rodriguez', compras: 26000, puntos: 260, active: 'Y'}
     ]);
   const [searchUser, setSearchUser] = useState(users);
+
+  const [userDelete, setUserDelete] = useState({
+    cedula: null,
+    nombre: '',
+    apellido: ''
+  });
 
   const searchDataUser = (event) => {
     let text = event.target.value
@@ -68,20 +77,30 @@ const Datatable = () => {
       return null
     });
     setSearchUser(newData);
-
   }
 
+  const handleClickOpen = (us) => {
+    setUserDelete({
+      cedula: us.cedula,
+      nombre: us.nombres, 
+      apellido: us.apellidos
+    });
+
+  };
+
+  // console.log(userDelete);
+
   return (
-    <>
+    <Layout>
       <Paper elevation={2} className={classes.paperSearch}>
-          <InputBase className={classes.input}
-            placeholder='Buscar...'
-            onChange={text => searchDataUser(text)}
-          />
-          <IconButton className={classes.iconButton}>
-            <SearchIcon/>
-          </IconButton>
-        </Paper>
+        <InputBase className={classes.input}
+          placeholder='Buscar...'
+          onChange={text => searchDataUser(text)}
+        />
+        <IconButton className={classes.iconButton}>
+          <SearchIcon/>
+        </IconButton>
+      </Paper>
       <TableContainer className='datatable__container'>
         <Table>
           <TableHead className='datatable__container__head'>
@@ -98,7 +117,7 @@ const Datatable = () => {
           <TableBody>
             {searchUser.map(user => (
               user.active === 'Y' ?
-                <TableRow key={user.id}>
+                <TableRow key={user.id} hover>
                 <TableCell>{user.id}</TableCell>
                 <TableCell>{user.cedula}</TableCell>
                 <TableCell>{user.nombres}</TableCell>
@@ -106,12 +125,21 @@ const Datatable = () => {
                 <TableCell>$ {user.compras}</TableCell>
                 <TableCell>{user.puntos}</TableCell>
                 <TableCell>
-                  <IconButton onClick={() => console.log(user.cedula)} size='small' color='primary'>
-                    <EditOutlined/>
-                  </IconButton>
-                  <IconButton onClick={() => console.log(user.cedula)} size='small' color='secondary'>
-                    <DeleteForeverOutlined/>
-                  </IconButton>
+                  <Tooltip title='Editar' arrow placement="bottom">
+                    <IconButton onClick={() => console.log(user.cedula)} size='small' color='primary'>
+                      <EditUser typeModal='edit'/>
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title='Eliminar' arrow placement="bottom">
+                    <IconButton onClick={() => handleClickOpen(user)} size='small' color='secondary'>
+                      <ModalDelete userDe={userDelete}/>
+                    </IconButton>
+                  </Tooltip>
+                  {/* <Tooltip title='Añadir compra' arrow placement="bottom">
+                    <IconButton onClick={() => handleClickOpen(user)} size='small' color='success'>
+                      <ModalDelete userDe={userDelete}/>
+                    </IconButton>
+                  </Tooltip> */}
                 </TableCell>
               </TableRow>
               :
@@ -120,8 +148,8 @@ const Datatable = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Layout>
   )
 }
 
-export default Datatable
+export default Datatable;

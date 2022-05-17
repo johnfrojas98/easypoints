@@ -1,6 +1,9 @@
 .logo__layout {
     width: 180px;
     height: 32px;
+    cursor: pointer;
+    align-items: center;
+    align-content: center;
 }
 
 .container__icon__drawer {
@@ -14,6 +17,16 @@
     width: 150px;
     height: 30px;
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.container__buttons {
+    margin-bottom: 3px;
+    padding: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .layout__footer {
@@ -23,6 +36,6 @@
 }
 
 .container__datatable__users {
-    margin-top: 75px;
+    margin-top: 15px;
     padding-top: 10px;
 }

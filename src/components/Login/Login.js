@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme=>({
   },
   container: {
     opacity: '0.9',
-    height: '60vh',
+    height: '75vh',
     marginTop: theme.spacing(10),
     [theme.breakpoints.down(400 + theme.spacing(2) + 2)]: {
       marginTop: 0,

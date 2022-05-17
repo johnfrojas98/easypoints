@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    /* margin: 10px; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container__form {
+    width: 70%;
+    margin-top: 30px;
+}
+
+.wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* grid-gap: 30px;
+    gap: 30px; */
+}
+.wrapper .box{
+    width: 100%;
+    position: relative;
+    padding: 20px;
+}
+
+.wrapper .box input {
+    width: 100%;
+    font-size: 15px;
+    background: transparent;
+    border: none;
+    outline: none;
+    /* border-bottom: 1px solid rgb(40, 205, 245); */
+    transition: 0.5s linear;
+}
+
+/* .wrapper .box input:focus,
+.wrapper .box input:valid{
+    padding: 20px 10px;
+    background-color: rgb(40, 205, 245);
+    margin-top: 10px;
+} */
+
+.wrapper .box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* color: white; */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    transition: 0.5s linear;
+}
+
+.wrapper .box input:focus ~ label,
+.wrapper .box input:valid ~ label{
+    padding: 0rem;
+}
+
+.wrapper__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    grid-gap: 30px;
+    gap: 30px; 
+    margin-top: 30px;
+}
+
+.wrapper__button {
+    /* width: 35%; */
+    display: flex;
+    justify-content: flex-end;
+    
+    /* align-content: flex-end;
+    align-items: flex-end; */
+    /* display: flex;
+    align-items: center;
+    align-content: center; */
+}

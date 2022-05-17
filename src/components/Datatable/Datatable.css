@@ -1,5 +1,6 @@
 .datatable__container {
     max-height: 72vh;
+    min-height: 72vh;
 }
 
 .datatable__container__head {
